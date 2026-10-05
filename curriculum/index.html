@@ -29,7 +29,7 @@ main{padding:16px;max-width:1400px;margin:auto}
 .card h2{font-size:13px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
 .leg{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14px}
 .leg i{display:inline-block;width:16px;height:16px;border:1px solid var(--g-line);border-radius:3px;vertical-align:-3px;margin-right:6px}
-.bar{height:8px;border-radius:4px;background:var(--line);margin-top:12px;overflow:hidden}.bar b{display:block;height:100%;background:#4caf50}
+.bar{display:flex;height:8px;border-radius:4px;background:var(--line);margin-top:12px;overflow:hidden}.bar b{display:block;height:100%;background:#4caf50}.bar b.y{background:#f5c518}
 .hint{color:var(--mut);font-size:13px;margin-top:8px}
 .scroll{overflow-x:auto;padding-bottom:6px}
 #grid{display:inline-block;padding:18px;background:var(--bg);min-width:100%}
@@ -53,7 +53,7 @@ td.b{border:none;background:transparent}
 .lt .ig{color:#333}.lt .ig.e{display:none}
 .ic{display:inline-flex;align-items:center;margin-right:5px;vertical-align:middle}.ic:empty{display:none}.ic svg{width:21px;height:14px;border:1px solid #0005;display:block}
 .pg{display:none;margin-top:16px;font-family:system-ui,sans-serif;color:#111;font-size:14px}.lt .pg{display:block}
-.pg .l{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}.pg .tr{height:10px;border-radius:5px;background:#d6dbe4;margin-top:8px;overflow:hidden}.pg .tr b{display:block;height:100%;background:#4caf50}
+.pg .l{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}.pg .tr{display:flex;height:10px;border-radius:5px;background:#d6dbe4;margin-top:8px;overflow:hidden}.pg .tr b{display:block;height:100%;background:#4caf50}.pg .tr b.y{background:#f5c518}
 #msg{color:var(--mut);font-size:13px;margin-left:6px}
 </style>
 </head>
@@ -64,7 +64,7 @@ td.b{border:none;background:transparent}
 <button id="th">🌓 Tema</button>
 </header>
 <main>
-<div class="card"><h2>Legenda e progresso</h2><div class="leg" id="leg"></div><div class="bar"><b id="pb"></b></div>
+<div class="card"><h2>Legenda e progresso</h2><div class="leg" id="leg"></div><div class="bar"><b id="pb"></b><b class="y" id="pby"></b></div>
 <div class="hint">Passe o mouse sobre uma disciplina e clique numa bolinha colorida para definir o status; clique de novo na mesma para limpar. Textos e títulos são editáveis direto na grade. Em cada disciplina, o campo de integralização (formato ano/semestre, por exemplo 2026/2) indica quando ela foi concluída ou quando se pretende concluí-la; o rótulo muda sozinho conforme o status. No PDF e no PNG, só aparece onde estiver preenchido.</div></div>
 <div class="card"><h2>Grade</h2>
 <div class="scroll"><div id="grid"></div></div></div>
@@ -89,7 +89,7 @@ const gp=t=>{const n=nrm(t);return /^(ingles|espanhol)\b/.test(n)?0:/^projeto in
 const cD=(a,b)=>gp(a.t)-gp(b.t)||cP(a,b);
 const vo=C=>{const x=C.itens.map((_,i)=>i),m=C.modo;if(m==='a')x.sort((i,j)=>cA(C.itens[i],C.itens[j]));else if(m==='s')x.sort((i,j)=>cP(C.itens[i],C.itens[j]));else if(m!=='p')x.sort((i,j)=>cD(C.itens[i],C.itens[j]));return x};
 const mat=C=>{if(C.modo!=='p'){C.itens=vo(C).map(i=>C.itens[i]);C.modo='p'}};
-const NM=['Pendente','Já cursada','Dispensada por aproveitamento','Aproveitada por proficiência','Cursando'];
+const NM=['Pendente','Já cursada','Aproveitamento','Proficiência','Cursando'];
 const DEF=()=>({titulo:'Meu curso',ciclos:['I','II','III'].map((r,i)=>({nome:`${i+1}º Ciclo`,itens:[{t:'Inglês '+r,s:0}]}))});
 let S=null;try{S=JSON.parse(localStorage.getItem('gcurr'))}catch(e){}
 if(!S||!Array.isArray(S.ciclos)||!S.ciclos.length)S=DEF();
@@ -102,8 +102,8 @@ const msg=t=>$('#msg').textContent=t||'';
 const D=(a,c,r,v)=>`data-a="${a}" data-c="${c}"${r!=null?` data-r="${r}"`:''}${v!=null?` data-v="${v}"`:''}`;
 function legend(){const n=[0,0,0,0,0];let pa=0;S.ciclos.forEach(c=>c.itens.forEach(i=>{n[i.s]++;if(i.s===0&&gp(i.t)>=3)pa++}));
  const tot=n.reduce((a,b)=>a+b,0),ok=n[1]+n[2]+n[3];
- const lh=[1,2,3,4,0].map(k=>`<span><i style="background:${k?`var(--s${k})`:'var(--g-cell)'}"></i>${k?NM[k]:'Pendente (disciplinas)'}: <b>${k?n[k]:n[0]-pa}</b></span>`).join('')+`<span><i style="background:var(--g-cell)"></i>Pendente (estágio/TG): <b>${pa}</b></span>`+`<span style="margin-left:auto"><b>${tot?Math.round(ok/tot*100):0}%</b> concluído (${ok} de ${tot})</span>`;
- $('#leg').innerHTML=lh;const pc=tot?ok/tot*100:0;$('#pb').style.width=pc+'%';const px=$('#pgx');if(px)px.innerHTML=`<div class="l">${lh}</div><div class="tr"><b style="width:${pc}%"></b></div>`}
+ const lh=[1,2,3,4,0].map(k=>`<span><i style="background:${k?`var(--s${k})`:'var(--g-cell)'}"></i>${k?NM[k]:'Pendente (disciplinas)'}: <b>${k?n[k]:n[0]-pa}</b></span>`).join('')+`<span><i style="background:var(--g-cell)"></i>Pendente (estágio/TG): <b>${pa}</b></span>`+`<span style="margin-left:auto"><b>${tot?Math.round(ok/tot*100):0}%</b> concluído (${ok} de ${tot}) · <b>${tot?Math.round(n[4]/tot*100):0}%</b> cursando (${n[4]})</span>`;
+ $('#leg').innerHTML=lh;const pc=tot?ok/tot*100:0,py=tot?n[4]/tot*100:0;$('#pb').style.width=pc+'%';$('#pby').style.width=py+'%';const px=$('#pgx');if(px)px.innerHTML=`<div class="l">${lh}</div><div class="tr"><b style="width:${pc}%"></b><b class="y" style="width:${py}%"></b></div>`}
 function render(){const N=S.ciclos.length,mx=Math.max(1,...S.ciclos.map(c=>c.itens.length));
  const O=S.ciclos.map(vo);let h=`<table style="min-width:${N*150}px"><tr><th colspan="${N}" class="tt"><span contenteditable data-ti data-ph="Título da grade">${esc(S.titulo)}</span></th></tr><tr>`
  +S.ciclos.map((c,i)=>`<th><span contenteditable data-c="${i}" data-ph="Ciclo">${esc(c.nome)}</span><div class="tools">${[['sd','★','Ordem padrão','d'],['sc','✎','Ordem personalizada','p'],['sa','A→Z','Ordem alfabética','a'],['sp','✓↓','Ordem por progresso','s']].map(([a,l,t,m])=>`<button ${D(a,i)} title="${t}" style="${(c.modo||'d')===m?'background:var(--acc);color:var(--accfg)':''}">${l}</button>`).join('')}<button ${D('cl',i)} title="Mover para a esquerda">◀</button><button ${D('cr',i)} title="Mover para a direita">▶</button><button ${D('cx',i)} title="Remover ciclo">✕</button></div></th>`).join('')+'</tr>';
