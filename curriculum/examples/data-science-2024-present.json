@@ -1,0 +1,271 @@
+{
+  "titulo": "Ciência de Dados: Cursando desde ago. 2024",
+  "ciclos": [
+    {
+      "nome": "1º Ciclo",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês I",
+          "p": "2019/1",
+          "s": 2
+        },
+        {
+          "t": "Algoritmos e Introdução à Computação",
+          "p": "2019/1",
+          "s": 2
+        },
+        {
+          "t": "Matemática Básica",
+          "p": "2019/1",
+          "s": 2
+        },
+        {
+          "t": "Metodologia da Pesquisa Científico-Tecnológica",
+          "p": "2020/2",
+          "s": 2
+        },
+        {
+          "t": "Princípios de Ciência de Dados",
+          "p": "2024/2",
+          "s": 1
+        },
+        {
+          "t": "Produção de Textos Acadêmicos-Científicos I",
+          "p": "2020/2",
+          "s": 2
+        },
+        {
+          "t": "Economia da Informação, Inovação e Negócios Disruptivos",
+          "p": "2024/2",
+          "s": 1
+        },
+        {
+          "t": "Gestão Ágil de Projetos",
+          "p": "2024/2",
+          "s": 1
+        }
+      ]
+    },
+    {
+      "nome": "2º Ciclo",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês II",
+          "p": "2019/2",
+          "s": 2
+        },
+        {
+          "t": "Estrutura de Dados",
+          "p": "2020/1",
+          "s": 2
+        },
+        {
+          "t": "Produção de Textos Acadêmicos-Científicos II",
+          "p": "2020/2",
+          "s": 2
+        },
+        {
+          "t": "Ciência de Dados e Marketing Digital",
+          "p": "2024/2",
+          "s": 1
+        },
+        {
+          "t": "Estatística Descritiva",
+          "p": "2024/2",
+          "s": 1
+        },
+        {
+          "t": "Álgebra Linear",
+          "p": "2026/1",
+          "s": 1
+        },
+        {
+          "t": "Projeto Integrador I",
+          "p": "2024/2",
+          "s": 1
+        }
+      ]
+    },
+    {
+      "nome": "3º Ciclo",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês III",
+          "p": "2020/1",
+          "s": 2
+        },
+        {
+          "t": "Cálculo",
+          "p": "2019/2",
+          "s": 2
+        },
+        {
+          "t": "Linguagens e seus Códigos I",
+          "p": "2025/1",
+          "s": 1
+        },
+        {
+          "t": "Empreendedorismo e Transformação Digital",
+          "p": "2025/1",
+          "s": 1
+        },
+        {
+          "t": "Análise de Algoritmos",
+          "p": "2025/1",
+          "s": 1
+        },
+        {
+          "t": "Estatística Indutiva",
+          "p": "2026/2",
+          "s": 4
+        },
+        {
+          "t": "Projeto Integrador II",
+          "p": "2026/2",
+          "s": 4
+        }
+      ]
+    },
+    {
+      "nome": "4º Ciclo",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês IV",
+          "p": "2020/1",
+          "s": 2
+        },
+        {
+          "t": "Bancos e Armazéns de Dados",
+          "p": "2020/2",
+          "s": 2
+        },
+        {
+          "t": "Linguagens e Seus Códigos II",
+          "p": "2026/2",
+          "s": 4
+        },
+        {
+          "t": "Inteligência Computacional",
+          "p": "2025/1",
+          "s": 1
+        },
+        {
+          "t": "Lógica Matemática",
+          "p": "2026/1",
+          "s": 1
+        },
+        {
+          "t": "Teoria do Aprendizado Estatístico",
+          "p": "2026/2",
+          "s": 4
+        },
+        {
+          "t": "Projeto Integrador III",
+          "p": "2026/2",
+          "s": 4
+        }
+      ]
+    },
+    {
+      "nome": "5º Ciclo",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês V",
+          "p": "2020/1",
+          "s": 2
+        },
+        {
+          "t": "Banco de Dados Não Relacionais",
+          "p": "2026/1",
+          "s": 1
+        },
+        {
+          "t": "Introdução a Ciência Cognitiva",
+          "p": "2026/1",
+          "s": 1
+        },
+        {
+          "t": "Otimização Combinatória",
+          "p": "2026/1",
+          "s": 1
+        },
+        {
+          "t": "Processamento de Linguagem Natural",
+          "p": "2026/1",
+          "s": 1
+        },
+        {
+          "t": "Aprendizado de Máquina I",
+          "p": "2027/1",
+          "s": 0
+        },
+        {
+          "t": "Projeto Integrador IV",
+          "p": "2026/2",
+          "s": 4
+        },
+        {
+          "t": "Trabalho de Graduação I",
+          "p": "2027/1",
+          "s": 0
+        }
+      ]
+    },
+    {
+      "nome": "6º Ciclo",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês VI",
+          "p": "2020/1",
+          "s": 2
+        },
+        {
+          "t": "Aspectos Legais e Éticos em Ciência de Dados",
+          "p": "2026/2",
+          "s": 4
+        },
+        {
+          "t": "Paradigmas e Tecnologias Emergentes",
+          "p": "2026/2",
+          "s": 4
+        },
+        {
+          "t": "Infraestrutura para Big Data",
+          "p": "2027/1",
+          "s": 0
+        },
+        {
+          "t": "Análise Preditiva",
+          "p": "2027/1",
+          "s": 0
+        },
+        {
+          "t": "Aprendizado de Máquina II",
+          "p": "2027/1",
+          "s": 0
+        },
+        {
+          "t": "Projeto Integrador V",
+          "p": "2027/1",
+          "s": 0
+        },
+        {
+          "t": "Trabalho de Graduação II",
+          "p": "2027/1",
+          "s": 0
+        },
+        {
+          "t": "Estágio",
+          "p": "2027/1",
+          "s": 0
+        }
+      ]
+    }
+  ]
+}

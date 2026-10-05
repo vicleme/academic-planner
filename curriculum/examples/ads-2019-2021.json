@@ -1,0 +1,276 @@
+{
+  "titulo": "Análise e Desenvolvimento de Sistemas: Formação de jan. 2019 a dez. 2021",
+  "ciclos": [
+    {
+      "nome": "1º Ciclo (Tarde)",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês I",
+          "p": "2019/1",
+          "s": 1
+        },
+        {
+          "t": "Matemática Discreta",
+          "p": "2019/1",
+          "s": 1
+        },
+        {
+          "t": "Programação em Microinformática",
+          "p": "2019/1",
+          "s": 1
+        },
+        {
+          "t": "Administração Geral",
+          "p": "2019/1",
+          "s": 1
+        },
+        {
+          "t": "Laboratório de Hardware",
+          "p": "2019/1",
+          "s": 1
+        },
+        {
+          "t": "Arquitetura e Organização de Computadores",
+          "p": "2019/1",
+          "s": 1
+        },
+        {
+          "t": "Algoritmos e Lógica de Programação",
+          "p": "2019/1",
+          "s": 1
+        }
+      ]
+    },
+    {
+      "nome": "2º Ciclo (Tarde)",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês II",
+          "p": "2019/2",
+          "s": 1
+        },
+        {
+          "t": "Engenharia de Software I",
+          "p": "2019/2",
+          "s": 1
+        },
+        {
+          "t": "Sistemas de Informação",
+          "p": "2019/2",
+          "s": 1
+        },
+        {
+          "t": "Linguagem de Programação",
+          "p": "2019/2",
+          "s": 1
+        },
+        {
+          "t": "Comunicação e Expressão",
+          "p": "2019/2",
+          "s": 1
+        },
+        {
+          "t": "Cálculo",
+          "p": "2019/2",
+          "s": 1
+        },
+        {
+          "t": "Contabilidade",
+          "p": "2019/2",
+          "s": 1
+        }
+      ]
+    },
+    {
+      "nome": "3º Ciclo (Tarde)",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês III",
+          "p": "2020/1",
+          "s": 3
+        },
+        {
+          "t": "Estatística Aplicada",
+          "p": "2020/1",
+          "s": 1
+        },
+        {
+          "t": "Economia e Finanças",
+          "p": "2020/1",
+          "s": 1
+        },
+        {
+          "t": "Sociedade e Tecnologia",
+          "p": "2020/1",
+          "s": 1
+        },
+        {
+          "t": "Estrutura de Dados",
+          "p": "2020/1",
+          "s": 1
+        },
+        {
+          "t": "Sistemas Operacionais I",
+          "p": "2020/1",
+          "s": 1
+        },
+        {
+          "t": "Engenharia de Software II",
+          "p": "2020/1",
+          "s": 1
+        },
+        {
+          "t": "Interação Humano Computador",
+          "p": "2020/1",
+          "s": 1
+        }
+      ]
+    },
+    {
+      "nome": "4º Ciclo (Tarde)",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês IV",
+          "p": "2020/1",
+          "s": 3
+        },
+        {
+          "t": "Banco de Dados",
+          "p": "2020/2",
+          "s": 1
+        },
+        {
+          "t": "Metodologia da Pesquisa Científico-Tecnológica",
+          "p": "2020/2",
+          "s": 1
+        },
+        {
+          "t": "Sistemas Operacionais II",
+          "p": "2020/2",
+          "s": 1
+        },
+        {
+          "t": "Programação Orientada a Objetos",
+          "p": "2020/2",
+          "s": 1
+        },
+        {
+          "t": "Engenharia de Software III",
+          "p": "2020/2",
+          "s": 1
+        },
+        {
+          "t": "Linguagem de Programação IV - Internet",
+          "p": "2020/2",
+          "s": 1
+        }
+      ]
+    },
+    {
+      "nome": "5º Ciclo (Noite)",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês V",
+          "p": "2020/1",
+          "s": 3
+        },
+        {
+          "t": "Gestão de Projetos",
+          "p": "2021/1",
+          "s": 1
+        },
+        {
+          "t": "Laboratório de Banco de Dados",
+          "p": "2021/1",
+          "s": 1
+        },
+        {
+          "t": "Segurança da Informação",
+          "p": "2021/1",
+          "s": 1
+        },
+        {
+          "t": "Laboratório de Engenharia de Software",
+          "p": "2021/1",
+          "s": 1
+        },
+        {
+          "t": "Programação para Dispositivos Móveis",
+          "p": "2021/1",
+          "s": 1
+        },
+        {
+          "t": "Rede de Computadores",
+          "p": "2021/1",
+          "s": 1
+        },
+        {
+          "t": "Trabalho de Graduação I",
+          "p": "2021/1",
+          "s": 1
+        }
+      ]
+    },
+    {
+      "nome": "6º Ciclo (Noite)",
+      "modo": "d",
+      "itens": [
+        {
+          "t": "Inglês VI",
+          "p": "2020/1",
+          "s": 3
+        },
+        {
+          "t": "Gestão de Equipes",
+          "p": "2021/2",
+          "s": 1
+        },
+        {
+          "t": "Empreendedorismo",
+          "p": "2021/2",
+          "s": 1
+        },
+        {
+          "t": "Gestão e Governança de Tecnologia da Informação",
+          "p": "2021/2",
+          "s": 1
+        },
+        {
+          "t": "Tópicos Especiais em Informática",
+          "p": "2021/2",
+          "s": 1
+        },
+        {
+          "t": "Inteligência Artificial",
+          "p": "2021/2",
+          "s": 1
+        },
+        {
+          "t": "Ética e Responsabilidade Profissional",
+          "p": "2021/2",
+          "s": 1
+        },
+        {
+          "t": "Programação Linear e Aplicações",
+          "p": "2021/2",
+          "s": 1
+        },
+        {
+          "t": "Trabalho de Graduação II",
+          "p": "2021/2",
+          "s": 1
+        },
+        {
+          "t": "Estágio Supervisionado",
+          "p": "2021/2",
+          "s": 1
+        }
+      ]
+    }
+  ]
+}

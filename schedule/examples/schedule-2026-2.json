@@ -1,0 +1,199 @@
+{
+  "titulo": "Grade de aulas",
+  "dias": [
+    "Segunda-feira",
+    "Terça-feira",
+    "Quarta-feira",
+    "Quinta-feira",
+    "Sexta-feira"
+  ],
+  "horarios": [
+    {
+      "inicio": "07:40",
+      "fim": "09:20"
+    },
+    {
+      "inicio": "08:00",
+      "fim": "09:20"
+    },
+    {
+      "inicio": "09:30",
+      "fim": "10:30",
+      "l": 1
+    },
+    {
+      "inicio": "09:30",
+      "fim": "11:10",
+      "l": 0
+    },
+    {
+      "inicio": "11:20",
+      "fim": "13:00"
+    },
+    {
+      "inicio": "13:30",
+      "fim": "15:30"
+    },
+    {
+      "inicio": "17:00",
+      "fim": "19:00"
+    }
+  ],
+  "aulas": [
+    {
+      "dia": 0,
+      "de": 0,
+      "ate": 0,
+      "disciplina": "Aspectos Legais e Éticos em Ciência de Dados",
+      "professor": "Rodrigo Luiz Zanethi",
+      "sala": "Sala 506",
+      "ciclo": "6º Ciclo",
+      "extracurricular": false
+    },
+    {
+      "dia": 0,
+      "de": 2,
+      "ate": 4,
+      "disciplina": "Paradigmas e Tecnologias Emergentes em Ciência de Dados",
+      "professor": "Felipe Cannarozzo Lourenço",
+      "sala": "Lab 3.1",
+      "ciclo": "6º Ciclo",
+      "extracurricular": false,
+      "monitoria": false
+    },
+    {
+      "dia": 3,
+      "de": 6,
+      "ate": 6,
+      "disciplina": "Francês",
+      "professor": "Vanina Carrara Sigrist",
+      "sala": "Sala 516",
+      "ciclo": "",
+      "extracurricular": true
+    },
+    {
+      "dia": 1,
+      "de": 2,
+      "ate": 2,
+      "disciplina": "Linguagens e seus Códigos II",
+      "professor": "Vanina Carrara Sigrist",
+      "sala": "Sala 103",
+      "ciclo": "4º Ciclo",
+      "extracurricular": false
+    },
+    {
+      "dia": 1,
+      "de": 4,
+      "ate": 4,
+      "disciplina": "Teoria do Aprendizado Estatístico",
+      "professor": "João Paulo Ferreira de Mello",
+      "sala": "Lab 5.2",
+      "ciclo": "4º Ciclo",
+      "extracurricular": false
+    },
+    {
+      "dia": 2,
+      "de": 4,
+      "ate": 4,
+      "disciplina": "Estatística Indutiva",
+      "professor": "Márcia Roberta dos Santos Pires da Silva",
+      "sala": "Lab 5.5",
+      "ciclo": "3º Ciclo",
+      "extracurricular": false
+    },
+    {
+      "dia": 3,
+      "de": 0,
+      "ate": 0,
+      "disciplina": "Estatística Indutiva",
+      "professor": "Márcia Roberta dos Santos Pires da Silva",
+      "sala": "Lab 3.1",
+      "ciclo": "3º Ciclo",
+      "extracurricular": false
+    },
+    {
+      "dia": 3,
+      "de": 2,
+      "ate": 4,
+      "disciplina": "PI II",
+      "professor": "Luiz Carlos Rodrigues Tavares",
+      "sala": "Lab 3.1",
+      "ciclo": "3º Ciclo",
+      "extracurricular": false
+    },
+    {
+      "dia": 4,
+      "de": 0,
+      "ate": 0,
+      "disciplina": "Teoria do Aprendizado Estatístico",
+      "professor": "João Paulo Ferreira de Mello",
+      "sala": "Lab 3.1",
+      "ciclo": "4º Ciclo",
+      "extracurricular": false
+    },
+    {
+      "dia": 4,
+      "de": 2,
+      "ate": 4,
+      "disciplina": "PI III",
+      "professor": "João Paulo Ferreira de Mello",
+      "sala": "Lab 3.1",
+      "ciclo": "4º Ciclo",
+      "extracurricular": false
+    },
+    {
+      "dia": 2,
+      "de": 5,
+      "ate": 5,
+      "disciplina": "Grupo de Pesquisa",
+      "professor": "João Paulo Ferreira de Mello",
+      "sala": "501",
+      "ciclo": "1º Semestre",
+      "extracurricular": true
+    },
+    {
+      "dia": 1,
+      "de": 0,
+      "ate": 0,
+      "disciplina": "Algoritmos e Lógica de Programação (Turma)",
+      "professor": "Luiz Carlos Rodrigues Tavares",
+      "sala": "Lab 5.3",
+      "ciclo": "1º Ciclo (ADS)",
+      "extracurricular": false,
+      "monitoria": true
+    },
+    {
+      "dia": 2,
+      "de": 1,
+      "ate": 1,
+      "disciplina": "Algoritmos e Lógica de Programação (Prof.)",
+      "professor": "Luiz Carlos Rodrigues Tavares",
+      "sala": "Lab 5.5",
+      "ciclo": "1º Ciclo (ADS)",
+      "extracurricular": false,
+      "monitoria": true
+    },
+    {
+      "dia": 2,
+      "de": 0,
+      "ate": 2,
+      "disciplina": "PI 4",
+      "professor": "Vagner dos Santos Macedo",
+      "sala": "Lab 5.2",
+      "ciclo": "5º Ciclo",
+      "extracurricular": false,
+      "monitoria": false
+    },
+    {
+      "dia": 3,
+      "de": 2,
+      "ate": 2,
+      "disciplina": "Algoritmos e Lógica de Programação",
+      "professor": "Luiz Carlos Rodrigues Tavares",
+      "sala": "Lab 5.3",
+      "ciclo": "1º Ciclo (ADS)",
+      "extracurricular": false,
+      "monitoria": true
+    }
+  ]
+}

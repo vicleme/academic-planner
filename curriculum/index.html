@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grade Curricular</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232d5fa8'/%3E%3Crect x='10' y='12' width='20' height='12' rx='2' fill='%23daf2c6'/%3E%3Crect x='34' y='12' width='20' height='12' rx='2' fill='%23c2ede4'/%3E%3Crect x='10' y='28' width='20' height='12' rx='2' fill='%23c8d9f8'/%3E%3Crect x='34' y='28' width='20' height='12' rx='2' fill='%23fff6b3'/%3E%3Crect x='10' y='44' width='20' height='8' rx='2' fill='%23fff'/%3E%3C/svg%3E">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--bg:#f4f6fa;--panel:#fff;--ink:#1b2230;--mut:#667085;--line:#d6dbe4;--acc:#2d5fa8;--accfg:#fff;--inp:#fff;
+--s1:#daf2c6;--s2:#c2ede4;--s3:#c8d9f8;--s4:#fff6b3;--g-cell:#fff;--g-line:#555;--g-t:#e0e0e0;--g-h:#eee}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12161d;--panel:#1b212b;--ink:#e8ecf2;--mut:#98a2b3;--line:#2f3846;--acc:#6ea3f0;--accfg:#0d1522;--inp:#232b37;
+--s1:#34501f;--s2:#1d5048;--s3:#27467d;--s4:#5c4d10;--g-cell:#1e2530;--g-line:#8a94a3;--g-t:#2c3441;--g-h:#252d39}}
+:root[data-theme="dark"]{--bg:#12161d;--panel:#1b212b;--ink:#e8ecf2;--mut:#98a2b3;--line:#2f3846;--acc:#6ea3f0;--accfg:#0d1522;--inp:#232b37;
+--s1:#34501f;--s2:#1d5048;--s3:#27467d;--s4:#5c4d10;--g-cell:#1e2530;--g-line:#8a94a3;--g-t:#2c3441;--g-h:#252d39}
+.lt{--s1:#daf2c6;--s2:#c2ede4;--s3:#c8d9f8;--s4:#fff6b3;--g-cell:#fff;--g-line:#555;--g-t:#e0e0e0;--g-h:#eee;--ink:#111;--bg:#fff}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{display:flex;align-items:center;gap:8px;padding:12px 16px;background:var(--panel);border-bottom:1px solid var(--line);flex-wrap:wrap}
+header h1{font-size:18px;margin:0;flex:1;min-width:150px}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--inp);color:var(--ink);border-radius:8px;padding:6px 11px}
+button.p{background:var(--acc);color:var(--accfg);border-color:var(--acc);font-weight:600}
+button:disabled{opacity:.4;cursor:default}
+main{padding:16px;max-width:1400px;margin:auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+.card h2{font-size:13px;margin:0 0 10px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
+.leg{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:14px}
+.leg i{display:inline-block;width:16px;height:16px;border:1px solid var(--g-line);border-radius:3px;vertical-align:-3px;margin-right:6px}
+.bar{height:8px;border-radius:4px;background:var(--line);margin-top:12px;overflow:hidden}.bar b{display:block;height:100%;background:#4caf50}
+.hint{color:var(--mut);font-size:13px;margin-top:8px}
+.scroll{overflow-x:auto;padding-bottom:6px}
+#grid{display:inline-block;padding:18px;background:var(--bg);min-width:100%}
+table{border-collapse:collapse;table-layout:fixed;width:100%;font-family:"Times New Roman",Times,serif;color:var(--ink)}
+th,td{border:1px solid var(--g-line);padding:6px 8px;text-align:center;font-size:15px;line-height:1.3;background:var(--g-cell);vertical-align:middle;position:relative}
+th{background:var(--g-h);font-weight:400}th.tt{background:var(--g-t);font-weight:700}
+td.s1{background:var(--s1)}td.s2{background:var(--s2)}td.s3{background:var(--s3)}td.s4{background:var(--s4)}
+td.b{border:none;background:transparent}
+[contenteditable]{outline:none;cursor:text;border-radius:3px;display:inline-block;min-width:1em}
+[contenteditable]:hover{background:rgba(120,160,255,.16)}[contenteditable]:focus{background:rgba(120,160,255,.28)}
+[contenteditable]:empty::before{content:attr(data-ph);color:var(--mut);font:italic 12px system-ui;opacity:.8}
+.tools{display:flex;gap:3px;justify-content:center;margin-top:4px;opacity:.28}td:hover .tools,th:hover .tools{opacity:1}
+.tools button{padding:0 6px;font:11px system-ui;line-height:18px}
+.tools .d{width:18px;height:18px;padding:0;border-radius:50%;border:1px solid var(--g-line)}
+.d1{background:var(--s1)}.d2{background:var(--s2)}.d3{background:var(--s3)}.d4{background:var(--s4)}
+.tools .d.on{outline:2px solid var(--acc);outline-offset:1px}
+.ar button{opacity:.35;font-size:12px;padding:3px 8px}.ar td:hover button{opacity:1}
+.lt .tools,.lt .ar{display:none}.lt [contenteditable]:hover{background:none}.lt [contenteditable]:empty::before{content:none}
+#grid .tools{flex-wrap:wrap}
+.ig{font-size:12px;color:var(--mut);margin-top:3px}.ig [contenteditable]{min-width:3.5em}
+.lt .ig{color:#333}.lt .ig.e{display:none}
+.ic{display:inline-flex;align-items:center;margin-right:5px;vertical-align:middle}.ic:empty{display:none}.ic svg{width:21px;height:14px;border:1px solid #0005;display:block}
+.pg{display:none;margin-top:16px;font-family:system-ui,sans-serif;color:#111;font-size:14px}.lt .pg{display:block}
+.pg .l{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}.pg .tr{height:10px;border-radius:5px;background:#d6dbe4;margin-top:8px;overflow:hidden}.pg .tr b{display:block;height:100%;background:#4caf50}
+#msg{color:var(--mut);font-size:13px;margin-left:6px}
+</style>
+</head>
+<body>
+<header>
+<h1>Grade Curricular</h1>
+<button id="undo" title="Desfazer (Ctrl+Z)" disabled>↶ Desfazer</button><button id="redo" title="Refazer (Ctrl+Y)" disabled>↷ Refazer</button>
+<button id="th">🌓 Tema</button>
+</header>
+<main>
+<div class="card"><h2>Legenda e progresso</h2><div class="leg" id="leg"></div><div class="bar"><b id="pb"></b></div>
+<div class="hint">Passe o mouse sobre uma disciplina e clique numa bolinha colorida para definir o status; clique de novo na mesma para limpar. Textos e títulos são editáveis direto na grade. Em cada disciplina, o campo de integralização (formato ano/semestre, por exemplo 2026/2) indica quando ela foi concluída ou quando se pretende concluí-la; o rótulo muda sozinho conforme o status. No PDF e no PNG, só aparece onde estiver preenchido.</div></div>
+<div class="card"><h2>Grade</h2>
+<div class="scroll"><div id="grid"></div></div></div>
+<div class="card"><h2>Ações</h2><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+<button id="addC">+ Ciclo</button><button id="sD">Todos: ordem padrão</button><button id="sC">Todos: ordem personalizada</button><button id="sA">Ordenar tudo A→Z</button><button id="sP">Ordenar tudo por progresso</button><button id="imp">Importar JSON</button><button id="clr">Limpar</button>
+<span style="flex:1"></span>
+<button class="p" data-f="json">JSON</button><button class="p" data-f="pdf">PDF</button><button class="p" data-f="png">PNG</button><span id="msg"></span></div>
+<input type="file" id="file" accept=".json,application/json" hidden>
+<div class="hint">PDF e PNG sempre saem em cores claras, sem os botões de edição e com o progresso no rodapé. Ícones automáticos: 🇺🇸 Inglês, 🇪🇸 Espanhol, 💼 Estágio, 📜 Trabalho de Graduação, 🧩 Projeto Integrador. Ordem de cada ciclo: ★ padrão (progresso; idiomas no topo; Projeto Integrador, Trabalho de Graduação e Estágio no fim), ✎ personalizada (use ▲▼; fica salva e vai no JSON), A→Z ou ✓↓ (cursada, dispensada, proficiência, cursando, pendente). Alternar entre os modos não perde a ordem personalizada; usar ▲▼ numa ordenação a converte em personalizada.</div></div>
+</main>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const FL={us:'<svg viewBox="0 0 28 14"><rect width="28" height="14" fill="#fff"/><path fill="#b22234" d="M0 0h28v2H0zM0 4h28v2H0zM0 8h28v2H0zM0 12h28v2H0z"/><rect width="12" height="8" fill="#3c3b6e"/><g fill="#fff"><circle cx="2" cy="2" r=".7"/><circle cx="6" cy="2" r=".7"/><circle cx="10" cy="2" r=".7"/><circle cx="4" cy="4" r=".7"/><circle cx="8" cy="4" r=".7"/><circle cx="2" cy="6" r=".7"/><circle cx="6" cy="6" r=".7"/><circle cx="10" cy="6" r=".7"/></g></svg>',
+es:'<svg viewBox="0 0 28 14"><rect width="28" height="14" fill="#c60b1e"/><rect y="3.5" width="28" height="7" fill="#ffc400"/></svg>'};
+const ico=t=>{const n=String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/^[^a-z]+/,'');
+ if(/^ingles\b/.test(n))return FL.us;if(/^espanhol\b/.test(n))return FL.es;if(/^estagio\b/.test(n))return'💼';
+ if(/^trabalho de graduacao\b/.test(n))return'📜';if(/^projeto integrador\b/.test(n))return'🧩';return''};
+const RK={1:0,2:1,3:2,4:3,0:4},cA=(a,b)=>a.t.localeCompare(b.t,'pt',{sensitivity:'base'}),cP=(a,b)=>RK[a.s]-RK[b.s];
+const nrm=t=>String(t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/^[^a-z]+/,'');
+const gp=t=>{const n=nrm(t);return /^(ingles|espanhol)\b/.test(n)?0:/^projeto integrador\b/.test(n)?2:/^trabalho de graduacao\b/.test(n)?3:/^estagio\b/.test(n)?4:1};
+const cD=(a,b)=>gp(a.t)-gp(b.t)||cP(a,b);
+const vo=C=>{const x=C.itens.map((_,i)=>i),m=C.modo;if(m==='a')x.sort((i,j)=>cA(C.itens[i],C.itens[j]));else if(m==='s')x.sort((i,j)=>cP(C.itens[i],C.itens[j]));else if(m!=='p')x.sort((i,j)=>cD(C.itens[i],C.itens[j]));return x};
+const mat=C=>{if(C.modo!=='p'){C.itens=vo(C).map(i=>C.itens[i]);C.modo='p'}};
+const NM=['Pendente','Já cursada','Dispensada por aproveitamento','Aproveitada por proficiência','Cursando'];
+const DEF=()=>({titulo:'Meu curso',ciclos:['I','II','III'].map((r,i)=>({nome:`${i+1}º Ciclo`,itens:[{t:'Inglês '+r,s:0}]}))});
+let S=null;try{S=JSON.parse(localStorage.getItem('gcurr'))}catch(e){}
+if(!S||!Array.isArray(S.ciclos)||!S.ciclos.length)S=DEF();
+let pres=JSON.stringify(S),undo=[],redo=[],lt=0;
+const ub=()=>{$('#undo').disabled=!undo.length;$('#redo').disabled=!redo.length};
+const sv=()=>{const c=JSON.stringify(S);try{localStorage.setItem('gcurr',c)}catch(e){}
+ if(c===pres)return;const n=Date.now();if(!undo.length||n-lt>600){undo.push(pres);if(undo.length>100)undo.shift()}
+ lt=n;pres=c;redo=[];ub()};
+const msg=t=>$('#msg').textContent=t||'';
+const D=(a,c,r,v)=>`data-a="${a}" data-c="${c}"${r!=null?` data-r="${r}"`:''}${v!=null?` data-v="${v}"`:''}`;
+function legend(){const n=[0,0,0,0,0];let pa=0;S.ciclos.forEach(c=>c.itens.forEach(i=>{n[i.s]++;if(i.s===0&&gp(i.t)>=3)pa++}));
+ const tot=n.reduce((a,b)=>a+b,0),ok=n[1]+n[2]+n[3];
+ const lh=[1,2,3,4,0].map(k=>`<span><i style="background:${k?`var(--s${k})`:'var(--g-cell)'}"></i>${k?NM[k]:'Pendente (disciplinas)'}: <b>${k?n[k]:n[0]-pa}</b></span>`).join('')+`<span><i style="background:var(--g-cell)"></i>Pendente (estágio/TG): <b>${pa}</b></span>`+`<span style="margin-left:auto"><b>${tot?Math.round(ok/tot*100):0}%</b> concluído (${ok} de ${tot})</span>`;
+ $('#leg').innerHTML=lh;const pc=tot?ok/tot*100:0;$('#pb').style.width=pc+'%';const px=$('#pgx');if(px)px.innerHTML=`<div class="l">${lh}</div><div class="tr"><b style="width:${pc}%"></b></div>`}
+function render(){const N=S.ciclos.length,mx=Math.max(1,...S.ciclos.map(c=>c.itens.length));
+ const O=S.ciclos.map(vo);let h=`<table style="min-width:${N*150}px"><tr><th colspan="${N}" class="tt"><span contenteditable data-ti data-ph="Título da grade">${esc(S.titulo)}</span></th></tr><tr>`
+ +S.ciclos.map((c,i)=>`<th><span contenteditable data-c="${i}" data-ph="Ciclo">${esc(c.nome)}</span><div class="tools">${[['sd','★','Ordem padrão','d'],['sc','✎','Ordem personalizada','p'],['sa','A→Z','Ordem alfabética','a'],['sp','✓↓','Ordem por progresso','s']].map(([a,l,t,m])=>`<button ${D(a,i)} title="${t}" style="${(c.modo||'d')===m?'background:var(--acc);color:var(--accfg)':''}">${l}</button>`).join('')}<button ${D('cl',i)} title="Mover para a esquerda">◀</button><button ${D('cr',i)} title="Mover para a direita">▶</button><button ${D('cx',i)} title="Remover ciclo">✕</button></div></th>`).join('')+'</tr>';
+ for(let r=0;r<mx;r++)h+='<tr>'+S.ciclos.map((c,i)=>{const q=O[i][r],it=q==null?null:c.itens[q];if(!it)return '<td class="b"></td>';
+  return `<td class="s${it.s}"><span class="ic">${ico(it.t)}</span><span contenteditable data-c="${i}" data-r="${q}" data-ph="Disciplina">${esc(it.t)}</span><div class="ig${it.p?'':' e'}">${[1,2,3].includes(it.s)?'Concluída em':'Prevista para'} <span contenteditable data-c="${i}" data-r="${q}" data-p data-ph="aaaa/s">${esc(it.p)}</span></div><div class="tools">`
+  +[1,2,3,4].map(k=>`<button class="d d${k}${it.s===k?' on':''}" ${D('st',i,q,k)} title="${NM[k]}"></button>`).join('')
+  +`<button ${D('up',i,q)} title="Subir">▲</button><button ${D('dn',i,q)} title="Descer">▼</button><button ${D('del',i,q)} title="Remover">✕</button></div></td>`}).join('')+'</tr>';
+ h+='<tr class="ar">'+S.ciclos.map((c,i)=>`<td class="b"><button ${D('add',i)}>+ disciplina</button></td>`).join('')+'</tr></table><div class="pg" id="pgx"></div>';
+ $('#grid').innerHTML=h;legend()}
+const act=f=>{f();render();sv()};
+const G=$('#grid');
+G.addEventListener('click',e=>{const b=e.target.closest('button[data-a]');if(!b)return;
+ const a=b.dataset.a,c=+b.dataset.c,r=+b.dataset.r,v=+b.dataset.v,C=S.ciclos[c],I=C.itens;
+ if(a==='add'){if(C.modo==='a'||C.modo==='s')mat(C);C.itens.push({t:'',s:0});render();sv();const f=G.querySelector(`[data-c="${c}"][data-r="${C.itens.length-1}"]`);if(f)f.focus();return}
+ act(()=>{
+  if(a==='st')I[r].s=I[r].s===v?0:v;
+  else if(a==='sa')C.modo='a';
+  else if(a==='sp')C.modo='s';
+  else if(a==='sc')C.modo='p';
+  else if(a==='sd')C.modo='d';
+  else if(a==='del')I.splice(r,1);
+  else if(a==='up'||a==='dn'){const o=vo(C),p=o.indexOf(r),t=a==='up'?p-1:p+1;if(t>=0&&t<o.length){mat(C);const J=C.itens;[J[t],J[p]]=[J[p],J[t]]}}
+  else if(a==='cl'&&c>0)[S.ciclos[c-1],S.ciclos[c]]=[S.ciclos[c],S.ciclos[c-1]];
+  else if(a==='cr'&&c<S.ciclos.length-1)[S.ciclos[c+1],S.ciclos[c]]=[S.ciclos[c],S.ciclos[c+1]];
+  else if(a==='cx'&&S.ciclos.length>1)S.ciclos.splice(c,1)})});
+G.addEventListener('input',e=>{const t=e.target.closest('[contenteditable]');if(!t)return;const d=t.dataset;
+ if('ti' in d)S.titulo=t.textContent;else if('p' in d){S.ciclos[d.c].itens[d.r].p=t.textContent.trim();t.parentElement.classList.toggle('e',!t.textContent.trim())}else if(d.r!=null){S.ciclos[d.c].itens[d.r].t=t.textContent;const q=t.previousElementSibling;if(q&&q.classList.contains('ic'))q.innerHTML=ico(t.textContent)}else S.ciclos[d.c].nome=t.textContent;sv()});
+G.addEventListener('keydown',e=>{if(!e.target.isContentEditable)return;
+ if(e.key==='Enter'){e.preventDefault();e.target.blur()}
+ else if((e.ctrlKey||e.metaKey)&&['b','i','u'].includes(e.key.toLowerCase()))e.preventDefault()});
+G.addEventListener('beforeinput',e=>{if(e.target.isContentEditable&&String(e.inputType).startsWith('format'))e.preventDefault()});
+G.addEventListener('paste',e=>{if(e.target.isContentEditable){e.preventDefault();document.execCommand('insertText',false,(e.clipboardData.getData('text/plain')||'').replace(/\s+/g,' '))}});
+$('#addC').onclick=()=>act(()=>S.ciclos.push({nome:`${S.ciclos.length+1}º Ciclo`,itens:[{t:'',s:0}]}));
+$('#sA').onclick=()=>act(()=>S.ciclos.forEach(c=>c.modo='a'));
+$('#sP').onclick=()=>act(()=>S.ciclos.forEach(c=>c.modo='s'));
+$('#sD').onclick=()=>act(()=>S.ciclos.forEach(c=>c.modo='d'));
+$('#sC').onclick=()=>act(()=>S.ciclos.forEach(c=>c.modo='p'));
+$('#clr').onclick=()=>{if(confirm('Limpar toda a grade?'))act(()=>{S=DEF()})};
+$('#imp').onclick=()=>$('#file').click();
+$('#file').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
+ r.onload=()=>{try{const j=JSON.parse(r.result);if(!Array.isArray(j.ciclos)||!j.ciclos.length)throw 0;
+  act(()=>{S={titulo:String(j.titulo||''),ciclos:j.ciclos.map(c=>({nome:String(c.nome||''),modo:['p','a','s','d'].includes(c.modo)?c.modo:'d',itens:(Array.isArray(c.itens)?c.itens:[]).map(i=>({t:String(i.t||''),p:String(i.p||''),s:[0,1,2,3,4].includes(+i.s)?+i.s:0}))}))}});msg('JSON importado.')}
+  catch(x){msg('JSON inválido: esperado "ciclos" com "itens".')}};r.readAsText(f);e.target.value=''};
+// tema: Auto (segue o sistema) → Claro → Escuro; sem data-theme, o CSS segue prefers-color-scheme
+const TM=['auto','light','dark'],TL={auto:'🌓 Tema: Auto',light:'☀️ Tema: Claro',dark:'🌙 Tema: Escuro'};
+let tm='auto';try{tm=localStorage.getItem('gtheme')||'auto'}catch(e){}
+const setTheme=m=>{tm=TM.includes(m)?m:'auto';const r=document.documentElement;if(tm==='auto')delete r.dataset.theme;else r.dataset.theme=tm;
+ $('#th').textContent=TL[tm];$('#th').title='Alternar tema (Auto, Claro, Escuro)';try{localStorage.setItem('gtheme',tm)}catch(e){}};
+$('#th').onclick=()=>setTheme(TM[(TM.indexOf(tm)+1)%TM.length]);setTheme(tm);
+const apply=snap=>{S=JSON.parse(snap);pres=snap;lt=0;render();try{localStorage.setItem('gcurr',snap)}catch(e){}ub()};
+const desf=()=>{if(undo.length){redo.push(pres);apply(undo.pop())}},ref=()=>{if(redo.length){undo.push(pres);apply(redo.pop())}};
+$('#undo').onclick=desf;$('#redo').onclick=ref;
+document.addEventListener('keydown',e=>{if(!(e.ctrlKey||e.metaKey)||e.altKey)return;const k=e.key.toLowerCase(),tg=e.target;
+ if(tg.tagName==='INPUT'||tg.tagName==='TEXTAREA')return;
+ if(k==='z'&&!e.shiftKey){e.preventDefault();desf()}else if((k==='z'&&e.shiftKey)||k==='y'){e.preventDefault();ref()}});
+// ---------- exportação ----------
+async function out(name,data){let d=null;try{d=await claude.use("downloads")}catch(e){}
+ if(d){try{await d.save({filename:name,data});return}catch(e){if(e&&e.code==='declined')return}}
+ const a=document.createElement('a');a.href=URL.createObjectURL(data instanceof Blob?data:new Blob([data]));a.download=name;a.click()}
+async function shot(){G.classList.add('lt');G.style.background='#fff';
+ try{return await html2canvas(G,{scale:2,backgroundColor:'#fff'})}finally{G.classList.remove('lt');G.style.background=''}}
+const slug=()=>(S.titulo||'grade').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'grade';
+document.addEventListener('click',async e=>{const f=e.target.dataset.f;if(!f)return;msg('Gerando…');
+ try{const nm=slug();
+  if(f==='json')await out(nm+'.json',JSON.stringify(S,null,2));
+  else{const c=await shot();
+   if(f==='png')await out(nm+'.png',await new Promise(r=>c.toBlob(r,'image/png')));
+   else{const {jsPDF}=window.jspdf,p=new jsPDF({orientation:'landscape',unit:'mm',format:'a4'}),W=277,H=c.height*W/c.width,sc=Math.min(1,186/H);
+    p.addImage(c.toDataURL('image/png'),'PNG',10,10,W*sc,H*sc);await out(nm+'.pdf',p.output('blob'))}}
+  msg('')}catch(x){msg('Falha ao gerar o arquivo.')}});
+render();ub();
+</script>
+</body>
+</html>
